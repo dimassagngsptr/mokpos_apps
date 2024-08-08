@@ -1,3 +1,4 @@
+// +heroku goVersion go1.22
 module transaction-be
 
 go 1.22.0
