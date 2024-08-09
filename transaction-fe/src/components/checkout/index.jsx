@@ -58,9 +58,10 @@ const Checkout = ({
       details: items,
       shipping_fee: shippingFee !== null ? parseInt(shippingFee) : 0,
       discount_percent: disc !== null ? parseInt(disc) : 0,
-      discount_amount: (getTotalPrice() * disc) / 100,
+      discount_amount: disc ? (getTotalPrice() * disc) / 100 : 0,
     });
   }, [customerID, items]);
+
   const handleCheckout = async () => {
     try {
       const res = await api.post("/transactions", checkout);
@@ -72,7 +73,6 @@ const Checkout = ({
     } catch (error) {
       console.log(error);
     }
-    window.location.reload();
   };
   return (
     <>
